@@ -62,87 +62,119 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: 40.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Updated: ',
-                    style: TextStyle(color: Colors.black38),
-                  ),
-                  Text(
-                    DateFormat('yMMMMd').format(DateTime.now()),
-                  ),
-                  const Text(
-                    ' at ',
-                    style: TextStyle(color: Colors.black38),
-                  ),
-                  Text(
-                    DateFormat('jm').format(DateTime.now()),
-                  ),
-                ],
-              ),
+      body: Column(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 40.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Updated: ',
+                  style: TextStyle(color: Colors.black38),
+                ),
+                Text(
+                  DateFormat('yMMMMd').format(DateTime.now()),
+                ),
+                const Text(
+                  ' at ',
+                  style: TextStyle(color: Colors.black38),
+                ),
+                Text(
+                  DateFormat('jm').format(DateTime.now()),
+                ),
+              ],
             ),
-            CarouselSlider.builder(
-              options: CarouselOptions(
-                height: 200,
-                onPageChanged: (index, reason) =>
-                    setState((() => activeIndex = index)),
-              ),
-              itemCount: urlImages.length,
-              itemBuilder: (context, index, realIndex) {
-                final urlImage = urlImages[index];
+          ),
+          CarouselSlider.builder(
+            options: CarouselOptions(
+              height: 200,
+              onPageChanged: (index, reason) =>
+                  setState((() => activeIndex = index)),
+            ),
+            itemCount: urlImages.length,
+            itemBuilder: (context, index, realIndex) {
+              final urlImage = urlImages[index];
 
-                return buildImage(urlImage, index);
-              },
+              return buildImage(urlImage, index);
+            },
+          ),
+          const SizedBox(height: 10),
+          buildIndicator(),
+          Container(
+            margin:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Title(
+                  color: Colors.black,
+                  child: const Text(
+                    'Pelosi Wants to Win House, but Can she Corral The Democrats?',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ListTile(
+                  leading: MyBullet(),
+                  title: const Text(
+                    'At 77, Representative Nancy Pelosi remains a dominant, but polarizing, figure in Washington.',
+                  ),
+                ),
+                ListTile(
+                  leading: MyBullet(),
+                  title: const Text(
+                    "How she bridges Democrats' factions on inmigration may help determine whther she can lead her party to a majority",
+                  ),
+                ),
+                ListTile(
+                  leading: const Text(
+                    '2h ago',
+                    style: TextStyle(color: Colors.black26),
+                  ),
+                  trailing: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const [
+                        Icon(
+                          Icons.bookmark,
+                          color: Colors.blueAccent,
+                        ),
+                        Icon(
+                          Icons.ios_share,
+                          color: Colors.blueAccent,
+                        ),
+                      ]),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            buildIndicator(),
-            Container(
-              margin:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Title(
-                    color: Colors.black,
-                    child: const Text(
-                      'Pelosi Wants to Win House, but Can she Corral The Democrats?',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25.0),
-                    ),
+          ),
+          const Divider(
+            height: 5.0,
+            thickness: 2.0,
+            indent: 100.0,
+            endIndent: 100.0,
+          ),
+          Container(
+            margin:
+                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            child: Column(
+              children: [
+                Title(
+                  color: Colors.black,
+                  child: const Text(
+                    'Analysis: G.O.P. Squirms as Trump Veers Off Script With Abuse Remarks',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 25.0),
                   ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  ListTile(
-                    leading: MyBullet(),
-                    title: const Text(
-                      'At 77, Representative Nancy Pelosi remains a dominant, but polarizing, figure in Washington.',
-                    ),
-                  ),
-                  ListTile(
-                    leading: MyBullet(),
-                    title: const Text(
-                      "How she bridges Democrats' factions on inmigration may help determine whther she can lead her party to a majority",
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Text('2h ago'),
-                    trailing: Row(
-                      children: [],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }
